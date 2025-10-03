@@ -16,7 +16,6 @@
             }, 100);
         }, 500);
 
-        // Tab switching functionality
         const tabs = document.querySelectorAll('.fixed.bottom-0 button');
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
@@ -29,16 +28,14 @@
                 tab.classList.add('text-pink-600');
                 tab.classList.add('tab-active');
 
-                // Here you would normally switch screens
                 console.log(`Switched to ${tab.querySelector('span').textContent} tab`);
             });
         });
 
-        // Member card hover effects
         const memberCards = document.querySelectorAll('.member-card');
         memberCards.forEach(card => {
             card.addEventListener('mouseenter', () => {
-                // Enhanced hover effect
+
                 card.style.transform = 'translateY(-8px)';
                 card.style.boxShadow = '0 15px 30px rgba(255, 20, 147, 0.25)';
             });
@@ -48,9 +45,9 @@
                 card.style.boxShadow = '0 4px 20px rgba(255, 20, 147, 0.15)';
             });
 
-            // Click event for member cards
+
             card.addEventListener('click', () => {
                 console.log(`Member ${card.querySelector('p').textContent} clicked`);
-                // Normally would navigate to member profile
+
             });
         });

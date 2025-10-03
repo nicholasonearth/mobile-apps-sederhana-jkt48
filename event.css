@@ -1,0 +1,52 @@
+.event-card {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 0.75rem; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.event-card-image {
+    height: 12rem; 
+    width: 100%;
+    object-fit: cover;
+}
+
+.event-card-content {
+    padding: 1rem; 
+    border-top: 1px solid #f3f4f6; 
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem; 
+    font-weight: 600;
+    border-radius: 9999px;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.tag-theater { background-color: #ec4899; } 
+.tag-meetgreet { background-color: #3b82f6; } 
+.tag-livestream { background-color: #8b5cf6; }
+.tag-special { background-color: #f59e0b; } 
+
+.event-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; 
+    font-size: 0.875rem; 
+    color: #4b5563; 
+    margin-top: 0.75rem;
+}

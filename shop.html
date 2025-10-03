@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Shop - JKT48 Connect</title>
+    <link rel="stylesheet" href="shop.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <div id="app" class="flex h-screen">
+
+        <aside class="w-64 bg-white flex flex-col flex-shrink-0 border-r border-gray-200">
+            <div class="h-20 flex items-center px-6 border-b border-gray-200">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/eac02e54-2d82-4663-bc15-76bb5b23c42e.png"
+                    alt="Logo" class="h-10 w-10 rounded-full mr-3">
+                <h1 class="text-xl font-bold text-gray-800">JKT48 Connect</h1>
+            </div>
+
+            <nav class="flex-1 px-4 py-6 space-y-2">
+                <a href="index.html"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <svg class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    Home
+                </a>
+                <a href="member.html"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <svg class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    Members
+                </a>
+                <a href="event.html"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <svg class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                    Events
+                </a>
+                <a href="shop.html"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-pink-600 bg-pink-50 rounded-lg">
+                    <svg class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    Shop
+                </a>
+            </nav>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto p-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-8 pb-4 border-b border-gray-200">
+                    <h1 class="text-3xl font-bold text-gray-900">JKT48 Official Shop</h1>
+                    <p class="mt-1 text-gray-600">Temukan merchandise eksklusif dari oshi favoritmu!</p>
+                </div>
+
+                <div class="mb-6 flex flex-col md:flex-row gap-4 items-center p-4 bg-white rounded-xl shadow-sm">
+                    <div class="relative w-full md:flex-1">
+                        <input type="text" id="shopSearchInput" placeholder="Cari Photopack, T-shirt..."
+                            class="w-full bg-gray-100 border-transparent rounded-lg py-2 px-4 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        <svg class="h-5 w-5 absolute left-3 top-2.5 text-gray-400" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <div id="filter-buttons" class="flex gap-2 flex-wrap">
+                        <button class="filter-btn active" data-category="all">Semua</button>
+                        <button class="filter-btn" data-category="Photopack">Photopack</button>
+                        <button class="filter-btn" data-category="Apparel">Apparel</button>
+                        <button class="filter-btn" data-category="Aksesoris">Aksesoris</button>
+                    </div>
+                </div>
+
+                <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="shop.js"></script>
+</body>
+
+</html>

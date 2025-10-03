@@ -1,435 +1,359 @@
-```
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JKT48 Connect</title>
+    <title>JKT48 Connect - Desktop</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        .card-shadow {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .gradient-bg {
+            background-image: linear-gradient(to bottom, #ec4899, #f9a8d4);
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle-animation 1.5s infinite;
+        }
+
+        @keyframes sparkle-animation {
+
+            0%,
+            100% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 
-<body class="relative">
-    <!-- Splash Screen -->
-    <div id="splash"
-        class="fixed inset-0 bg-gradient-to-b from-pink-500 to-pink-100 z-50 flex flex-col items-center justify-center transition-opacity duration-500">
-        <div class="relative mb-8">
-            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/eac02e54-2d82-4663-bc15-76bb5b23c42e.png"
-                alt="Logo JKT48 Connect" class="w-40 h-40 rounded-full animate-pulse">
-            <div class="sparkle" style="top: 10px; left: 30px;"></div>
-            <div class="sparkle" style="top: 60px; right: 20px; animation-delay: 0.3s;"></div>
-            <div class="sparkle" style="bottom: 20px; left: 50px; animation-delay: 0.6s;"></div>
-        </div>
-        <div class="w-64 h-2 bg-white rounded-full overflow-hidden">
-            <div id="progressBar" class="h-full bg-gradient-to-r from-pink-600 to-pink-300" style="width: 0%"></div>
-        </div>
-        <p class="text-white mt-4 font-medium">Loading...</p>
-    </div>
+<body class="bg-gray-100">
 
-    <!-- Main App Container -->
-    <div id="app" class="hidden relative h-full overflow-y-auto pb-20">
-        <!-- Home Screen -->
-        <div id="homeScreen">
-            <!-- Header -->
-            <div class="gradient-bg text-white p-4 pb-6">
-                <div class="flex justify-between items-center mb-6">
-                    <div>
-                        <h1 class="text-xl font-bold">JKT48 Connect</h1>
-                        <p class="text-xs opacity-80">Hello, Oshi!</p>
+
+    <div id="app" class="hidden lg:flex h-screen">
+
+        <aside class="w-64 bg-white flex flex-col flex-shrink-0 border-r border-gray-200">
+            <div class="h-20 flex items-center px-6 border-b border-gray-200">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/eac02e54-2d82-4663-bc15-76bb5b23c42e.png"
+                    alt="Logo" class="h-10 w-10 rounded-full mr-3">
+                <h1 class="text-xl font-bold text-gray-800">JKT48 Connect</h1>
+            </div>
+
+            <nav class="flex-1 px-4 py-6 space-y-2">
+                <a href="#" class="flex items-center px-4 py-2 text-sm font-medium text-pink-600 bg-pink-50 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    Home
+                </a>
+                <a href="member.html"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    Members
+                </a>
+                <a href="event.html"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                    Events
+                </a>
+                <a href="shop.html"
+                    class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    Shop
+                </a>
+            </nav>
+
+            <div class="px-4 py-4 border-t border-gray-200">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7bf1139d-b932-415b-b363-bdaab5b975de.png"
+                            alt="Profile picture" class="w-full h-full object-cover">
                     </div>
-                    <div class="flex items-center space-x-3">
-                        <button>
+                    <div class="ml-3">
+                        <p class="text-sm font-semibold text-gray-800">Oshi</p>
+                        <div class="flex items-center text-xs text-pink-600 font-medium mt-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>2,480 Coins</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto">
+            <header class="sticky top-0 bg-gray-100 bg-opacity-80 backdrop-blur-md z-10">
+                <div class="flex justify-between items-center p-6 border-b border-gray-200">
+                    <div class="relative w-full max-w-md">
+                        <input type="text" placeholder="Cari member, event, merch..."
+                            class="w-full bg-white border border-gray-300 rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-pink-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-2.5 text-gray-400"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-500 hover:text-pink-600">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                             </svg>
                         </button>
-                        <div class="w-8 h-8 rounded-full overflow-hidden">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7bf1139d-b932-415b-b363-bdaab5b975de.png"
-                                alt="Profile picture" class="w-full h-full object-cover">
-                        </div>
                     </div>
                 </div>
-                <div class="relative">
-                    <input type="text" placeholder="Cari member, event, merch..."
-                        class="w-full bg-white bg-opacity-20 rounded-full py-2 px-4 pl-10 text-sm placeholder-white placeholder-opacity-70 focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-2.5" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </div>
-            </div>
+            </header>
 
-            <!-- Today's Schedule -->
-            <div class="mx-4 mt-6">
-                <div class="flex justify-between items-center mb-2">
-                    <h2 class="font-bold text-gray-800">Today's Schedule</h2>
-                    <a href="#" class="text-xs text-pink-600">See All</a>
-                </div>
-                <div class="bg-white rounded-xl card-shadow p-4">
-                    <div class="flex items-start space-x-3">
-                        <div class="bg-pink-100 rounded-lg p-2 flex-shrink-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-600" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="font-semibold text-gray-800">Theater Performance</h3>
-                            <p class="text-sm text-gray-600">JKT48 Theater • 19:00 WIB</p>
-                            <div class="flex items-center mt-2 space-x-2">
-                                <div class="text-xs bg-pink-100 text-pink-800 px-2 py-1 rounded-full">#JKT48Joyfull
-                                </div>
-                                <div class="text-xs bg-pink-100 text-pink-800 px-2 py-1 rounded-full">Team T</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-            <!-- Member Spotlight -->
-            <div class="mx-4 mt-6">
-                <div class="flex items-center justify-between mb-3">
-                    <h2 class="font-bold text-gray-800 text-lg">Member Spotlight</h2>
-                    <button class="text-xs text-pink-600 flex items-center">
-                        See All
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="relative">
-                    <div class="overflow-x-auto pb-4 space-x-3 flex snap-x snap-mandatory">
-                        <!-- Member 1 -->
-                        <div
-                            class="member-card flex-shrink-0 w-40 snap-center bg-white rounded-xl overflow-hidden card-shadow relative">
-                            <div class="oshi-border absolute top-2 right-2 z-10 bg-white rounded-full p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <div class="lg:col-span-2 space-y-8">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h2 class="font-bold text-gray-800 text-xl">Top Member</h2>
+                            <button class="text-sm text-pink-600 flex items-center font-medium">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
                                 </svg>
-                            </div>
-                            <div class="h-40 relative overflow-hidden">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e86cab1e-9c0f-42e9-886c-1b23c7524bcf.png"
-                                    alt="JKT48 Member Feni"
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                                <div
-                                    class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent opacity-70">
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                            <div class="member-card bg-white rounded-xl overflow-hidden card-shadow relative">
+                                <div class="oshi-border absolute top-2 right-2 z-10 bg-white rounded-full p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
                                 </div>
-                                <p class="absolute bottom-2 left-2 text-white font-medium text-sm">Feni</p>
-                            </div>
-                            <div class="p-3">
-                                <div class="flex justify-center space-x-1 text-xs text-gray-500">
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                                        </svg>
-                                        <span>Gen 9</span>
+                                <div class="h-48 relative overflow-hidden">
+                                    <img src="oline.jpeg" alt="JKT48 Member Feni"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div
+                                        class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent opacity-70">
                                     </div>
-                                    <span>•</span>
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                        </svg>
-                                        <span>Value</span>
+                                    <p class="absolute bottom-2 left-3 text-white font-bold">Oline</p>
+                                </div>
+                            </div>
+                            <div class="member-card bg-white rounded-xl overflow-hidden card-shadow relative">
+                                <div class="oshi-border absolute top-2 right-2 z-10 bg-white rounded-full p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                </div>
+                                <div class="h-48 relative overflow-hidden">
+                                    <img src="zee.jpeg" alt="JKT48 Member Feni"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div
+                                        class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent opacity-70">
+                                    </div>
+                                    <p class="absolute bottom-2 left-3 text-white font-bold">Zee</p>
+                                </div>
+                            </div>
+                            <div class="member-card bg-white rounded-xl overflow-hidden card-shadow relative">
+                                <div class="oshi-border absolute top-2 right-2 z-10 bg-white rounded-full p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                </div>
+                                <div class="h-48 relative overflow-hidden">
+                                    <img src="delyn.jpeg" alt="JKT48 Member Feni"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                                    <div
+                                        class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent opacity-70">
+                                    </div>
+                                    <p class="absolute bottom-2 left-3 text-white font-bold">Delyn</p>
+                                </div>
+                            </div>
+                            <div class="member-card bg-white rounded-xl overflow-hidden card-shadow relative">
+                                <div class="oshi-border absolute top-2 right-2 z-10 bg-white rounded-full p-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                </div>
+                                <div class="h-48 relative overflow-hidden">
+                                    <img src="gita.jpeg" alt="JKT48 Member Gracia" class="w-full h-full object-cover">
+                                    <div
+                                        class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent opacity-70">
+                                    </div>
+                                    <p class="absolute bottom-2 left-3 text-white font-bold">Gita</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="font-bold text-gray-800 text-xl mb-3">Latest Updates</h2>
+                        <div class="bg-white rounded-xl card-shadow overflow-hidden">
+                            <div class="p-4 border-b border-gray-100">
+                                <div class="flex items-start space-x-4">
+                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/22af5329-2b85-4de1-ad00-8139fe8f9ec4.png"
+                                        alt="JKT48 Official logo" class="w-12 h-12 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <div class="flex justify-between items-center">
+                                            <h3 class="font-semibold text-gray-800">JKT48 Official</h3>
+                                            <span class="text-xs text-gray-400">10 march 2024</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-1">Terima kasih banyak untuk kalian yang
+                                            sudah menyaksikan pertunjukan Banzai JKT48. Hari ini menandai telah
+                                            berakhirnya show Banzai JKT48.
+
+                                            Mohon dukungannya selalu untuk JKT48. Dan sampai jumpa di event Ramadhan
+                                            ya!!</p>
+                                        <div class="mt-3 overflow-hidden rounded-lg">
+                                            <img src="banzai.jpg" alt="Poster pertunjukan Banzai JKT48"
+                                                class="w-full h-auto object-cover">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-4 border-b border-gray-100">
+                                <div class="flex items-start space-x-4">
+                                    <img src="olinee.jpeg" alt="Member profile picture"
+                                        class="w-12 h-12 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <div class="flex justify-between items-center">
+                                            <h3 class="font-semibold text-gray-800">Oline Manuel</h3>
+                                            <span class="text-xs text-gray-400">5h ago</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-1">Siang! Semangat kah hari ini? Jangan
+                                            sampai telat makan ya. Aku juga mau berterima kasih karena 2shot aku ud SO
+                                            🥹, aku berharap disetiap kesempatan ini aku bisa menampilkan sesuatu
+                                            memorable 🤍 (bajunya sudah aku persiapkan dr lama!)❤️</p>
+                                        <div class="mt-3 grid grid-cols-2 gap-2">
+                                            <img src="olinepost.jpg" alt="Zee posing after dance practice"
+                                                class="w-full h-full object-cover rounded-lg">
+                                            <img src="olinepost2.jpg" alt="Zee smiling with other members"
+                                                class="w-full h-full object-cover rounded-lg">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <button
+                            class="w-full mt-4 py-2 bg-pink-50 text-pink-600 rounded-full text-sm font-medium hover:bg-pink-100 transition-colors">Load
+                            More Updates</button>
+                    </div>
+                </div>
 
-                        <!-- Member 2 -->
-                        <div
-                            class="member-card flex-shrink-0 w-40 snap-center bg-white rounded-xl overflow-hidden card-shadow relative">
-                            <div class="h-40 relative overflow-hidden">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bfd0e1b3-0544-46bb-9b17-6abaf262bdac.png"
-                                    alt="JKT48 Member Zee - Smiling brightly with hands in peace sign"
-                                    class="w-full h-full object-cover">
-                                <div
-                                    class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent opacity-70">
+                <div class="lg:col-span-1 space-y-8">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <h2 class="font-bold text-gray-800 text-lg">Today's Schedule</h2>
+                            <a href="event.html" class="text-sm text-pink-600">See All</a>
+                        </div>
+                        <div class="bg-white rounded-xl card-shadow p-4">
+                            <div class="flex items-start space-x-4">
+                                <div class="bg-pink-100 rounded-lg p-3 flex-shrink-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-pink-600" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                    </svg>
                                 </div>
-                                <p class="absolute bottom-2 left-2 text-white font-medium text-sm">Zee</p>
-                            </div>
-                            <div class="p-3">
-                                <div class="flex justify-center space-x-1 text-xs text-gray-500">
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                                        </svg>
-                                        <span>Gen 10</span>
-                                    </div>
-                                    <span>•</span>
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                        </svg>
-                                        <span>Value</span>
-                                    </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">Theater Performance</h3>
+                                    <p class="text-sm text-gray-600">JKT48 Theater • 19:00 WIB</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Member 3 -->
-                        <div
-                            class="member-card flex-shrink-0 w-40 snap-center bg-white rounded-xl overflow-hidden card-shadow relative">
-                            <div class="oshi-border absolute top-2 right-2 z-10 bg-white rounded-full p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    <div>
+                        <h2 class="font-bold text-gray-800 text-lg mb-3">Quick Actions</h2>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button
+                                class="bg-white rounded-lg p-3 flex flex-col items-center justify-center card-shadow hover:bg-pink-50 transition-colors duration-200">
+                                <div class="relative">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
+                                    <div
+                                        class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white">
+                                    </div>
+                                </div>
+                                <span class="text-sm mt-2 text-gray-700 font-medium">Live</span>
+                            </button>
+                            <button
+                                class="bg-white rounded-lg p-3 flex flex-col items-center justify-center card-shadow hover:bg-pink-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                 </svg>
-                            </div>
-                            <div class="h-40 relative overflow-hidden">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/70c39c31-691a-4fb5-b5a3-a2fd4aaf60db.png"
-                                    alt="JKT48 Member Gracia - Winking at camera with playful expression"
-                                    class="w-full h-full object-cover">
-                                <div
-                                    class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black to-transparent opacity-70">
-                                </div>
-                                <p class="absolute bottom-2 left-2 text-white font-medium text-sm">Gracia</p>
-                            </div>
-                            <div class="p-3">
-                                <div class="flex justify-center space-x-1 text-xs text-gray-500">
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                                        </svg>
-                                        <span>Gen 7</span>
-                                    </div>
-                                    <span>•</span>
-                                    <div class="flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none"
-                                            viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                        </svg>
-                                        <span>Value</span>
-                                    </div>
-                                </div>
-                            </div>
+                                <span class="text-sm mt-2 text-gray-700 font-medium">Oshi</span>
+                            </button>
+                            <button
+                                class="bg-white rounded-lg p-3 flex flex-col items-center justify-center card-shadow hover:bg-pink-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                </svg>
+                                <span class="text-sm mt-2 text-gray-700 font-medium">Shop</span>
+                            </button>
+                            <button
+                                class="bg-white rounded-lg p-3 flex flex-col items-center justify-center card-shadow hover:bg-pink-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
+                                <span class="text-sm mt-2 text-gray-700 font-medium">News</span>
+                            </button>
                         </div>
                     </div>
                 </div>
+
             </div>
-
-            <!-- Quick Actions -->
-            <div class="mt-6 mx-4">
-                <h2 class="font-bold text-gray-800 mb-3">Quick Actions</h2>
-                <div class="grid grid-cols-4 gap-2">
-                    <button
-                        class="bg-white rounded-lg p-3 flex flex-col items-center card-shadow hover:bg-pink-50 transition-colors duration-200">
-                        <div class="relative">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                            </svg>
-                            <div
-                                class="live-indicator absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white">
-                            </div>
-                        </div>
-                        <span class="text-xs mt-1 text-gray-700">Live</span>
-                    </button>
-                    <button class="bg-white rounded-lg p-3 flex flex-col items-center card-shadow">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                        <span class="text-xs mt-1 text-gray-700">Oshi</span>
-                    </button>
-                    <button class="bg-white rounded-lg p-3 flex flex-col items-center card-shadow">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                        </svg>
-                        <span class="text-xs mt-1 text-gray-700">Shop</span>
-                    </button>
-                    <button class="bg-white rounded-lg p-3 flex flex-col items-center card-shadow">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
-                        <span class="text-xs mt-1 text-gray-700">News</span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Latest Updates -->
-            <div class="mt-6 mx-4">
-                <h2 class="font-bold text-gray-800 mb-3">Latest Updates</h2>
-                <div class="bg-white rounded-xl card-shadow overflow-hidden">
-                    <!-- Update 1 -->
-                    <div class="p-4 border-b border-gray-100 hover:bg-pink-50 transition-colors duration-200">
-                        <div class="flex items-start space-x-3">
-                            <div class="w-10 h-10 rounded-full overflow-hidden">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/22af5329-2b85-4de1-ad00-8139fe8f9ec4.png"
-                                    alt="JKT48 Official logo" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex justify-between">
-                                    <h3 class="font-semibold text-sm">JKT48 Official</h3>
-                                    <span class="text-xs text-gray-400">2h ago</span>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-1">Pengumuman setlist baru untuk pertunjukan "Banzai
-                                    JKT48" mulai minggu depan!</p>
-                                <div class="mt-2 overflow-hidden rounded-lg">
-                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e57f4346-433b-49e0-bf42-63ce861b525b.png"
-                                        alt="Poster pertunjukan Banzai JKT48 dengan member utama"
-                                        class="w-full h-auto object-cover">
-                                </div>
-                                <div class="mt-2 flex justify-between items-center">
-                                    <div class="flex space-x-3">
-                                        <button class="flex items-center text-xs text-gray-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                                            </svg>
-                                            <span class="ml-1">42</span>
-                                        </button>
-                                        <button class="flex items-center text-xs text-gray-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                                            </svg>
-                                            <span class="ml-1">15</span>
-                                        </button>
-                                    </div>
-                                    <button class="text-xs text-pink-600 font-medium">Read More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Update 2 -->
-                    <div class="p-4 border-b border-gray-100">
-                        <div class="flex items-start space-x-3">
-                            <div class="w-10 h-10 rounded-full overflow-hidden">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/15fa7da0-03dd-47fa-80ff-644d3b2e961c.png"
-                                    alt="Member profile picture" class="w-full h-full object-cover">
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex justify-between">
-                                    <h3 class="font-semibold text-sm">Zee - JKT48</h3>
-                                    <span class="text-xs text-gray-400">5h ago</span>
-                                </div>
-                                <p class="text-sm text-gray-600 mt-1">Hari ini latihan menari untuk setlist baru!
-                                    Sedikit lelah tapi sangat menyenangkan ❤️</p>
-                                <div class="mt-2 grid grid-cols-2 gap-1">
-                                    <div class="aspect-square overflow-hidden rounded">
-                                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a4399f16-8690-474a-b118-6a9a94ba8a0a.png"
-                                            alt="Zee posing after dance practice" class="w-full h-full object-cover">
-                                    </div>
-                                    <div class="aspect-square overflow-hidden rounded">
-                                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e145371b-bf1a-4b2e-bf77-bd7a74507a78.png"
-                                            alt="Zee smiling with other members" class="w-full h-full object-cover">
-                                    </div>
-                                </div>
-                                <div class="mt-2 flex justify-between items-center">
-                                    <div class="flex space-x-3">
-                                        <button class="flex items-center text-xs text-gray-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
-                                            </svg>
-                                            <span class="ml-1">128</span>
-                                        </button>
-                                        <button class="flex items-center text-xs text-gray-500">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                                            </svg>
-                                            <span class="ml-1">32</span>
-                                        </button>
-                                    </div>
-                                    <button class="text-xs text-pink-600 font-medium">Read More</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="w-full mt-3 py-2 bg-pink-50 text-pink-600 rounded-full text-sm font-medium">Load More
-                    Updates</button>
-            </div>
-        </div>
-
-        <!-- Bottom Navigation -->
-        <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-2 px-4">
-            <button class="tab-active flex flex-col items-center text-xs text-pink-600">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-                <span>Home</span>
-            </button>
-            <button class="flex flex-col items-center text-xs text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
-                <span>Members</span>
-            </button>
-            <button class="flex flex-col items-center text-xs text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                </svg>
-                <span>Events</span>
-            </button>
-            <button class="flex flex-col items-center text-xs text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                </svg>
-                <span>Shop</span>
-            </button>
-            <button class="flex flex-col items-center text-xs text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span>Profile</span>
-            </button>
-        </div>
-
-        <!-- Coins Indicator -->
-        <div
-            class="fixed top-16 right-4 bg-gradient-to-r from-pink-500 to-pink-400 text-white rounded-full px-3 py-1 flex items-center shadow-lg z-10 animate-bounce">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span class="text-xs font-medium">2,480</span>
-        </div>
+        </main>
     </div>
-<script src="script.js"></script>
-</body>
+
+    <div id="mobile-app" class="lg:hidden">
+        <p class="p-4 text-center">Tampilan mobile akan muncul di sini. Silakan salin kode HTML asli Anda ke dalam div
+            #mobile-app.</p>
+    </div>
 
 </html>
